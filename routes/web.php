@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index/index');
 });
+//登陆
+Route::any('/index/login','IndexController@login');
+Route::any('/index/login_do','IndexController@login_do');
+Route::any('/index/index','IndexController@index');
