@@ -17,4 +17,5 @@ Route::get('/', function () {
 //登陆
 Route::any('/index/login','IndexController@login');
 Route::any('/index/login_do','IndexController@login_do');
+//首页
 Route::any('/index/index','IndexController@index');

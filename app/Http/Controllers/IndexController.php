@@ -18,7 +18,7 @@ class IndexController extends Controller
     	if(!empty($info)){
     		return view("index/index",['username'=>$username]);
     	}
-    	echo '账号或密码错误';
+    	echo '账号或密码错误,清重新登陆';
     	header("Refresh:1;url=/");die;
     }
     public function index(){
