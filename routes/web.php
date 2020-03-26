@@ -24,4 +24,4 @@ Route::any('/index/login_do','IndexController@login_do');
 //首页
 Route::any('/index/index','IndexController@index');
 
-Route::any('/index/aouth','IndexController@aouth');
+Route::any('/index/sendSms','IndexController@sendSms');

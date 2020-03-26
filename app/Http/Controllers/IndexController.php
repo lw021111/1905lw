@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-
+use App\Tool\Sms;
 class IndexController extends Controller
 {
 	//注册页
@@ -12,19 +12,35 @@ class IndexController extends Controller
 	}
 	//注册
 	public function register_do(){
+
 		$data=request()->all();
-		//$username=request()->username;
-		//$password=request()->password;
-		$info=DB::table('user')->insert($data);
+		$code=session('code');
+		//echo $code.PHP_EOL;
+		// if($data['code']!=$code){
+		// 	echo "验证码错误";die;
+		// }
+		$info=DB::table('user')->insert(['user_tel'=>$data['user_tel'],'password'=>$data['password']]);
 		if($info){
-			//$tel=DB::table('user')->where('username'=>$username)->select();
-			
 			echo "注册成功";
 			header("Refresh:2;url=/");die;
 		}else{
 			echo "注册失败";die;
 		}
 	}
+
+	public function sendSms(){
+		//if(!empty(session('code'))){
+			request()->session()->flush();
+		// }
+		$phone=request()->user_tel;
+		$code=rand(1111,9999);
+		$res=Sms::sendSms($phone,$code);
+		session(['code'=>$code]);
+		if($res==true){
+			echo json_encode(['code'=>200,'message'=>'发送成功']);die;
+		}
+	}
+
 	//登录页
     public function login(){
     	return view('login.login');
