@@ -16,9 +16,9 @@ class IndexController extends Controller
 		$data=request()->all();
 		$code=session('code');
 		//echo $code.PHP_EOL;
-		// if($data['code']!=$code){
-		// 	echo "验证码错误";die;
-		// }
+		if($data['code']!=$code){
+			echo "验证码错误";die;
+		}
 		$info=DB::table('user')->insert(['user_tel'=>$data['user_tel'],'password'=>$data['password']]);
 		if($info){
 			echo "注册成功";
@@ -54,7 +54,7 @@ class IndexController extends Controller
     		return view("index/index",['username'=>$username]);
     	}
     	echo '账号或密码错误,清重新登陆';
-    	header("Refresh:1;url=/");die;
+    	header("Refresh:1;url=login");die;
     }
 
     public function ma(){

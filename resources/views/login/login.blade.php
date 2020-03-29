@@ -24,7 +24,7 @@
         <div id="darkbannerwrap"></div>
         
         <form method="post" action="{{url('index/login_do')}}" class="layui-form" >
-            <input name="username" placeholder="手机号"  type="text" lay-verify="required" class="layui-input" >
+            <input name="user_tel" placeholder="手机号"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
             <input name="password" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">

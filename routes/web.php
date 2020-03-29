@@ -18,10 +18,11 @@ Route::get('/', function () {
 Route::any('/index/register','IndexController@register');
 Route::any('/index/register_do','IndexController@register_do');
 //登陆
-Route::any('/index/ma','IndexController@ma');
-Route::any('/index/login','IndexController@login');
+Route::any('/index/ma','IndexController@ma');//扫码登陆
+Route::any('/index/login','IndexController@login');//手机号登陆
 Route::any('/index/login_do','IndexController@login_do');
 //首页
 Route::any('/index/index','IndexController@index');
 
+//发送验证码
 Route::any('/index/sendSms','IndexController@sendSms');
