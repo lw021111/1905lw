@@ -24,5 +24,10 @@ Route::any('/index/login_do','IndexController@login_do');
 //首页
 Route::any('/index/index','IndexController@index');
 
+//搜索
+Route::any('/index/search','IndexController@search');
+Route::any('/index/detail','IndexController@detail');
+
+
 //发送验证码
 Route::any('/index/sendSms','IndexController@sendSms');

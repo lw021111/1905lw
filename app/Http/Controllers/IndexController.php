@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use DB;
+use App\Detail;
 use Illuminate\Http\Request;
 use App\Tool\Sms;
 class IndexController extends Controller
@@ -56,13 +57,29 @@ class IndexController extends Controller
     	echo '账号或密码错误,清重新登陆';
     	header("Refresh:1;url=login");die;
     }
-
-    public function ma(){
-    	return view('login.ma');
-    }
-
+    //首页
     public function index(){
     	return view('index.index');
+    }
+    //搜索
+    public function search(){
+    	$data=request()->all();
+    	$res=Detail::where($data['list'],'like','%'.$data['type'].'%')->first();
+    	//dd($res);
+    	if(!empty($res)){
+    		return view('index.detail',['res'=>$res]);
+    	}else{
+    		return view('index.search');
+    	}
+    }
+
+
+
+
+
+
+ 	public function ma(){
+    	return view('login.ma');
     }
     public function aouth(){
     	return view('login.aouth');
