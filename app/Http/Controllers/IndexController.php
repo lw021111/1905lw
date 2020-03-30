@@ -16,7 +16,7 @@ class IndexController extends Controller
 		$data=request()->all();
 		$code=session('code');
 		//echo $code.PHP_EOL;
-		if($data['code']!=$code){
+		if($code!=$data['code']){
 			echo "验证码错误";die;
 		}
 		$info=DB::table('user')->insert(['user_tel'=>$data['user_tel'],'password'=>$data['password']]);
