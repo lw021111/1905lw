@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index/index');
-});
+
 //注册
 Route::any('/index/register','IndexController@register');
 Route::any('/index/register_do','IndexController@register_do');
@@ -22,7 +20,7 @@ Route::any('/index/ma','IndexController@ma');//扫码登陆
 Route::any('/index/login','IndexController@login');//手机号登陆
 Route::any('/index/login_do','IndexController@login_do');
 //首页
-Route::any('/index/index','IndexController@index');
+Route::any('/','IndexController@index');
 
 //搜索
 Route::any('/index/search','IndexController@search');
